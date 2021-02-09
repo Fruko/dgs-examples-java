@@ -13,7 +13,7 @@ import java.util.UUID;
 public class UUIDScalar implements Coercing<UUID, String> {
     @Override
     public String serialize(Object dataFetcherResult) throws CoercingSerializeException {
-        if (dataFetcherResult instanceof UUID) {
+        if (dataFetcherResult instanceof UUID || dataFetcherResult instanceof String) {
             return dataFetcherResult.toString();
         } else {
             throw new CoercingSerializeException("Not a valid UUID");
@@ -27,7 +27,6 @@ public class UUIDScalar implements Coercing<UUID, String> {
 
     @Override
     public UUID parseLiteral(Object input) throws CoercingParseLiteralException {
-        UUID result = UUID.fromString(((StringValue) input).getValue());
         if (input instanceof StringValue) {
             return UUID.fromString(((StringValue) input).getValue());
         }

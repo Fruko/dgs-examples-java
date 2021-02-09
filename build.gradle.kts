@@ -45,6 +45,7 @@ dependencies {
 tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
 	generateClient = true
 	packageName = "com.example.demo.generated"
+	typeMapping = mutableMapOf("UUID" to "java.util.UUID")
 }
 
 tasks.withType<JavaCompile> {

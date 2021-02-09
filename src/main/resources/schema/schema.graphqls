@@ -4,6 +4,7 @@ type Query {
 
 type Mutation {
     addReview(review: SubmittedReview): [Review]
+    scalarAsInput(scalar: [UUID]): [UUID]
     addArtwork(showId: Int!, upload: Upload!): [Image]! @skipcodegen
 }
 
@@ -37,4 +38,5 @@ type Image {
 
 scalar DateTime
 scalar Upload
+scalar UUID
 directive @skipcodegen on FIELD_DEFINITION

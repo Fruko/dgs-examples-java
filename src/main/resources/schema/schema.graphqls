@@ -4,7 +4,8 @@ type Query {
 
 type Mutation {
     addReview(review: SubmittedReview): [Review]
-    scalarAsInput(scalar: [UUID]): [UUID]
+    scalarAsInput(scalar: [UUID!]!): [UUID!]!
+    intAsInput(number: Int!): Int!
     addArtwork(showId: Int!, upload: Upload!): [Image]! @skipcodegen
 }
 

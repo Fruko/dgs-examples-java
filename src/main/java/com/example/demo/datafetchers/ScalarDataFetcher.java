@@ -20,4 +20,10 @@ public class ScalarDataFetcher {
             throw new Exception("Not UUID");
         }
     }
+
+    @DgsData(parentType = DgsConstants.MUTATION.TYPE_NAME, field = "intAsInput")
+    public int intAsInput(@InputArgument("number") int number,
+                                           DataFetchingEnvironment dataFetchingEnvironment) throws Exception {
+        return number;
+    }
 }

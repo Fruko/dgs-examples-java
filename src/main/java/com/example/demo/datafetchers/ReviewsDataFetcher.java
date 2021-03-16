@@ -47,12 +47,17 @@ public class ReviewsDataFetcher {
     }
 
     @DgsData(parentType = DgsConstants.MUTATION.TYPE_NAME, field = DgsConstants.MUTATION.AddReview)
-    public List<Review> addReview(@InputArgument("review")SubmittedReview reviewInput) {
+    public List<Review> addReview(@InputArgument("review") SubmittedReview reviewInput) {
         reviewsService.saveReview(reviewInput);
 
         List<Review> reviews = reviewsService.reviewsForShow(reviewInput.getShowId());
 
         return Objects.requireNonNullElseGet(reviews, List::of);
+    }
+
+    @DgsData(parentType = DgsConstants.MUTATION.TYPE_NAME, field = "incorrectMapping")
+    public boolean incorrectMapping(@InputArgument("reviews") List<SubmittedReview> reviews) {
+        return true;
     }
 
     @DgsData(parentType = DgsConstants.SUBSCRIPTION_TYPE, field = DgsConstants.SUBSCRIPTION.ReviewAdded)

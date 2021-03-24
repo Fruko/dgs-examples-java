@@ -55,6 +55,12 @@ public class ClientTestUUIDDataFetcher {
             return new HttpResponse(exchange.getStatusCodeValue(), exchange.getBody());
         });
 
+        // prevent extraction that hides the real error
+        if(response.hasErrors()) {
+            System.out.println(response.getErrors());
+            return null;
+        }
+
         UUID test = response.extractValueAsObject("testClient", UUID.class);
         return UUID.fromString(test.toString());
     }

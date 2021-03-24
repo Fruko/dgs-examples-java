@@ -1,11 +1,13 @@
 type Query {
-    shows(titleFilter: String): [Show]
+    testUUID: UUID
+    testClientUUID(test: UUID!): UUID!
+    testStr: String
+    testClientStr(test: String!): String!
 }
 
 type Mutation {
     addReview(review: SubmittedReview): [Review]
-    scalarAsInput(scalar: [UUID!]!): [UUID!]!
-    intAsInput(number: Int!): Int!
+    scalarAsInput(scalar: UUID!): UUID!
     incorrectMapping(reviews: [SubmittedReview!]!): Boolean!
     addArtwork(showId: Int!, upload: Upload!): [Image]! @skipcodegen
 }
